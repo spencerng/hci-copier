@@ -123,11 +123,15 @@
 				<div id="seperatorBin">Separator Source (A,B,C): X</div>
 			</div>
       </div>
-	  <button type="button" style="width: 295px;height: 50px;font-size: 25px;">Confirm Print</button><br><br>
+	  <button type="button" style="width: 295px;height: 50px;font-size: 25px;" onclick="confirmPrint()">Confirm Print</button><br><br>
 	  <button type="button" style="width: 155px;height: 30px;font-size: 15px;" onclick="returnScreen2()">Make Changes</button>
     </div>
 </div>
 
+<div class="container" id="screen4" hidden>
+	<title>Print Page</title>
+	<h1>Print Page</h1>
+	<h1>You have completed your print!</h1>
 </div>
 </body>
 </html>
@@ -179,5 +183,11 @@ function reviewPrint(){
 function returnScreen2(){
 	document.getElementById('screen2').hidden=false;
 	document.getElementById('screen3').hidden=true;
+}
+
+//print page
+function confirmPrint(){
+	document.getElementById('screen3').hidden=true;
+	document.getElementById('screen4').hidden=false;
 }
 </script>

@@ -12,7 +12,7 @@ html, body {
 .box {
   position:relative;
   border: 2px solid black;
-  margin: 0 0 4rem;
+  margin: 0 0 3rem;
 }
 
 .reviewBox {
@@ -84,7 +84,11 @@ top: 3rem;
 
 #bin-btn {
   position:absolute;
-  margin:3rem 1rem;
+  margin:2rem 1rem 1rem;
   height: 3rem;
   width: 3rem;
 }
+
+#bin-btn:hover {
+  background-color:lightgray;
+  }

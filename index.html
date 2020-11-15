@@ -21,6 +21,7 @@
 </style>
 <div class="no_style" id = "screen1">
 	<title>Input Account</title>
+	<h1>Input Account</h1>
 	<div class="btn-group-vertical ml-4 mt-4" role="group" aria-label="Basic example">
     <div class="btn-group">
         <input class="text-center form-control-lg mb-2" id="code" maxlength="4" disabled>
@@ -82,12 +83,21 @@
       <div class = "box" style= "height:220px">
         <div class="title"> Seperator Page </div>
       </div>
-      <button type="button" class="btn btn-success" id="review-btn">Review & Print</button>
+      <button type="button" class="btn btn-success" id="review-btn" onclick="reviewPrint()">Review & Print</button>
     </div>
   </div>
 </div>
 
-<div class="container" id="screen2" hidden>
+<div class="no_style" id="screen3" hidden>
+	<title>Review Print</title>
+	<h1>Review Print</h1>
+	<div>
+      <div class = "box" style= "height:400px;width:500px;display: block;margin-left: auto;
+  margin-right: auto;">
+        <div class="title" style="width:200px">Review Information</div>
+      </div>
+    </div>
+</div>
 
 </div>
 </body>
@@ -128,5 +138,11 @@ function logout(){
 	document.getElementById('code').value = "";
 	document.getElementById('screen1').hidden=false;
 	document.getElementById('screen2').hidden=true;
+}
+
+//button to submit printInformation and review print job
+function reviewPrint(){
+	document.getElementById('screen2').hidden=true;
+	document.getElementById('screen3').hidden=false;
 }
 </script>

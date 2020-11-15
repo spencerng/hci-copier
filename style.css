@@ -49,3 +49,27 @@ html, body {
   font-size: 20px;
   left:135px;
 }
+
+#side {
+  margin: 12px;
+  border: 2px solid black;
+  height: 100px;
+}
+
+#side:hover {
+background-color:lightgray;
+}
+
+.icon {
+  width:150px;
+  height:70px;
+  position:absolute;
+  left:5px;
+  top:10px;
+}
+
+.box-text{
+position:absolute;
+right: 4rem;
+top: 3rem;
+}

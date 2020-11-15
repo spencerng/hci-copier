@@ -48,23 +48,37 @@
 </div>
 
 <div class="container" hidden>
-	<title>Copy Options</title>
   <div style="text-align: left;">Account number: XXXX</div>
+  <div id="account">Account Number: XXXX</div>
+  <button type="button" class="btn btn-danger" id="cancel-button">Cancel & Logout</button>
+
   <h1>Copy Options</h1>
   <div>
     <!--Column 1-->
     <div class="option_col">
-      <div class = "box" style= "height:225px"></div>
-      <div class = "box" style= "height:225px"></div>
+      <div class = "box" style= "height:225px">
+          <div class="title"style="width:115px"> # of Copies </div>
+        </div>
+      <div class = "box" style= "height:225px">
+        <div class="title" style="width:100px"> Brightness </div>
+      </div>
     </div>
     <!--Column 2-->
-    <div class="option_col"></div>
+    <div class="option_col">
+      <div class = "box" style= "height:490px">
+        <div class="title" style="width:60px"> Sides </div>
+      </div>
+    </div>
 
     <!--Column 3-->
-    <div class="option_col">
-      <div class = "box" style= "height:150px"></div>
-      <div class = "box" style= "height:220px"></div>
-      <button type="button" class="btn btn-success">Success</button>
+    <div class="option_col" style="position: relative;">
+      <div class = "box" style= "height:150px">
+        <div class="title" style="width:140px"> Paper Source </div>
+      </div>
+      <div class = "box" style= "height:220px">
+        <div class="title"> Seperator Page </div>
+      </div>
+      <button type="button" class="btn btn-success" id="review-btn">Review & Print</button>
     </div>
   </div>
 </div>

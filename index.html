@@ -61,14 +61,18 @@
   <div>
     <!--Column 1-->
     <div class="option_col">
+      <!--Num Copies-->
       <div class = "box" style= "height:225px">
           <div class="title"style="width:115px"> # of Copies </div>
           <button type="button" class="button" id="bin-btn" style = "left:2rem;top:3rem"> - </button>
           <input class="text-center" id="copies" maxlength="2" style="position:absolute" disabled>
           <button type="button" class="button" id="bin-btn" style = "right:2rem;top:3rem"> + </button>
         </div>
+      <!--Brightness-->
       <div class = "box" style= "height:225px">
         <div class="title" style="width:100px"> Brightness </div>
+        <input type="range" id="brightness" name="brightness" min="-2" max="+2"
+        style="position:absolute; top:5rem; left:2rem; width:15rem;">
       </div>
     </div>
 

@@ -109,11 +109,22 @@
 	<title>Review Print</title>
 	<h1>Review Print</h1>
 	<div>
-      <div class = "box" style= "height:400px;width:500px;display: block;margin-left: auto;
+      <div class = "box" style= "height:210px;width:500px;display: block;margin-left: auto;
   margin-right: auto;">
         <div class="title" style="width:200px">Review Information</div>
+			<!--Print Information-->
+			<br>
+			<div style="text-align:left;font-size:25px;">
+				<div id="pageNum">Page Number: X</div>
+				<div id="brightness">Brightness: X</div>
+				<div id="sideOpt">Side: X</div>
+				<div id="paperBin">Paper Source Bin (A,B,C): X</div>
+				<div id="seperator?">Separator Page?: Yes/No</div>
+				<div id="seperatorBin">Separator Source (A,B,C): X</div>
+			</div>
       </div>
-	  <button type="button" style="width: 295px;height: 50px;font-size: 25px;">Confirm Print</button>
+	  <button type="button" style="width: 295px;height: 50px;font-size: 25px;">Confirm Print</button><br><br>
+	  <button type="button" style="width: 155px;height: 30px;font-size: 15px;" onclick="returnScreen2()">Make Changes</button>
     </div>
 </div>
 
@@ -162,5 +173,11 @@ function logout(){
 function reviewPrint(){
 	document.getElementById('screen2').hidden=true;
 	document.getElementById('screen3').hidden=false;
+}
+
+//return to screen2 input
+function returnScreen2(){
+	document.getElementById('screen2').hidden=false;
+	document.getElementById('screen3').hidden=true;
 }
 </script>

@@ -43,9 +43,9 @@ html, body {
 }
 
 #cancel-button {
+  position:absolute;
   font-size: 25px;
-  position: absolute;
-  right: 135px;
+  right: 3rem;
   width: 295px;
   height: 50px;
   top: 10px;

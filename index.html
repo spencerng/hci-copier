@@ -109,10 +109,10 @@ function keyPress(value){
 	}
 	//submit button is pressed
 	else if(value == -3 && (String(document.getElementById('code').value).length) == 4){
-		accountNum = parseInt(document.getElementById('code').value)
+		accountNum = document.getElementById('code').value
 		document.getElementById('screen1').hidden=true;
 		document.getElementById('screen2').hidden=false;
-		document.getElementById('account#').innerHTML = "Account number: " + String(accountNum);
+		document.getElementById('account#').innerHTML = "Account number: " + accountNum;
 	}
 	else{
 		//do nothing here

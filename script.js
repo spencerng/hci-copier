@@ -143,8 +143,8 @@ function printAnimation(){
 		document.getElementById('printLabel').innerHTML = "Print Progress: Copy " + String(pages) + " of " + data.copies; 
 	}
 	else{
-		document.getElementById('completeMessage').hidden = false;
-		document.getElementById('cancelPrint').hidden = true;
+		// document.getElementById('completeMessage').hidden = false;
+		// document.getElementById('cancelPrint').hidden = true;
 		replace('printingScreen', 'doneScreen');
 		clearInterval(timer);
 	}
@@ -200,6 +200,7 @@ function returnScreen2(){
 //return to options screen from review printing screen
 function returnScreen3(){
 	replace('printingScreen', 'reviewPrintScreen');
+	document.getElementById('completeMessage').hidden = true;
 	pages = 0;
 	document.getElementById('printProgress').value = 0;
 }

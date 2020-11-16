@@ -17,37 +17,35 @@ function keyPress(value){
 	//submit button is pressed
 	else if(value == -3 && (String(document.getElementById('code').value).length) == 4){
 		accountNum = document.getElementById('code').value
-		document.getElementById('screen1').hidden=true;
-		document.getElementById('screen2').hidden=false;
+		document.getElementById('enterAccountScreen').hidden=true;
+		document.getElementById('printOptionsScreen').hidden=false;
 		document.getElementById('account#').innerHTML = "Account number: " + accountNum;
-	}
-	else{
-		//do nothing here
 	}
 }
 
-//logout back to account screen1
+function replace(idToHide, idToShow) {
+	document.getElementById(idToHide).hidden = true;
+	document.getElementById(idToShow).hidden = false;
+}
+
+//logout back to account enterAccountScreen
 function logout(){
 	accountNum = "";
 	document.getElementById('code').value = "";
-	document.getElementById('screen1').hidden=false;
-	document.getElementById('screen2').hidden=true;
+	replace('printOptionsScreen', 'enterAccountScreen');
 }
 
 //button to submit printInformation and review print job
-function reviewPrint(){
-	document.getElementById('screen2').hidden=true;
-	document.getElementById('screen3').hidden=false;
+function reviewPrint() {
+	replace('printOptionsScreen', 'reviewPrintScreen');
 }
 
-//return to screen2 input
+//return to printOptionsScreen input
 function returnScreen2(){
-	document.getElementById('screen2').hidden=false;
-	document.getElementById('screen3').hidden=true;
+	replace('reviewPrintScreen', 'printOptionsScreen')
 }
 
 //print page
 function confirmPrint(){
-	document.getElementById('screen3').hidden=true;
-	document.getElementById('screen4').hidden=false;
+	replace('reviewPrintScreen', 'printOptionsScreen')
 }

@@ -1,10 +1,11 @@
 var data;
+var copiesField;
 
 function onLoad() {
 	data = { copies: 1 }
-	var copiesField = document.getElementById("copies")
+	copiesField = document.getElementById("copies")
 	copiesField.value = 1;
-	document.getElementById("plusCopyBtn").onclick = function () { copiesField.value += (+1); }
+	document.getElementById("plusCopyBtn").onclick = function () { copiesField.value = copiesField.value + 1; }
 	document.getElementById("minusCopyBtn").onclick = function () { 
 		if (copiesField.value != 1) {
 			copiesField.value -= 1;
@@ -53,6 +54,7 @@ function reviewPrint() {
 	replace('printOptionsScreen', 'reviewPrintScreen');
 	//set accountNum in review page
 	document.getElementById('accNum').innerHTML = data.accountNum;
+	data.copies = copiesField.value;
 }
 
 //return to printOptionsScreen input

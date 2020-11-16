@@ -43,6 +43,8 @@ function logout(){
 //button to submit printInformation and review print job
 function reviewPrint() {
 	replace('printOptionsScreen', 'reviewPrintScreen');
+	//set accountNum in review page
+	document.getElementById('accNum').innerHTML = data.accountNum;
 }
 
 //return to printOptionsScreen input

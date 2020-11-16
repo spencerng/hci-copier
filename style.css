@@ -73,13 +73,13 @@ html, body {
   left:135px;
 }
 
-#side {
+.sideBtn {
   margin: 12px;
   border: 2px solid black;
   height: 100px;
 }
 
-#side:hover {
+.sideBtn:hover {
 background-color:lightgray;
 }
 
@@ -146,6 +146,9 @@ top: 3rem;
   border: 1px solid black;
 }
 
-#printOptionsScreen {
-  min-width: 1080px;
+
+
+:active {
+  /* pls change this idk what i'm doing */
+  background-color: green;
 }

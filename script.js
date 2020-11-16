@@ -43,12 +43,44 @@ function registerGroup(className) {
 	}
 }
 
-function checkSepSourceEnable () {
+function getGroupValue(className) {
+	var elements = document.getElementsByClassName(className)
+	for (var i = 0; i < elements.length; i++) {
+		if (elements[i].className.includes("active")) {
+			return elements[i].value;
+		}
+	}
 
+	return "";
+}
+
+function checkSepSourceEnable () {
+	var sepLabel = document.getElementById("sepSourceLabel")
+	if (getGroupValue("sepBtn") === "Yes") {
+		disableClass("sepSourceBtn", false)
+		sepLabel.classList.remove("disable-text")
+	} else {
+		removeActive("sepSourceBtn")
+		disableClass("sepSourceBtn", true)
+		sepLabel.className += " disable-text"
+	}
+}
+
+function disableClass(className, disable) {
+	var elements = document.getElementsByClassName(className)
+	for (var i = 0; i < elements.length; i++) {
+		elements[i].disabled = disable;
+	}
 }
 
 function checkPrintBtnEnable () {
-
+	reviewBtn = document.getElementById("review-btn")
+	if (getGroupValue("sideBtn") !== "" && getGroupValue("sourceBtn") !== "" && (getGroupValue("sepBtn") === "No" 
+		|| getGroupValue("sepSourceBtn") !== "")) {
+		reviewBtn.disabled = false;
+	} else {
+		reviewBtn.disabled = true;
+	}
 }
 
 function removeActive(filterClass) {

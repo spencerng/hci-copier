@@ -109,14 +109,14 @@
                             <button type="button" class="button bin-btn sepBtn" value="Yes" style = "left:7rem"> Yes </button>
                             <button type="button" class="button bin-btn sepBtn" value="No" style = "left:14rem"> No </button>
                         </div>
-                        <div style="position:absolute; top:8rem; left:2rem; font-size:20px;"> Paper Source</div>
+                        <div class="disable-text" id="sepSourceLabel" style="position:absolute; top:8rem; left:2rem; font-size:20px;"> Paper Source</div>
                         <div>
-                            <button type="button" class="button bin-btn sepSourceBtn" value="A" style = "left:4rem; bottom:3rem"> A </button>
-                            <button type="button" class="button bin-btn sepSourceBtn" value="B" style = "left:11rem; bottom:3rem"> B </button>
-                            <button type="button" class="button bin-btn sepSourceBtn" value="C" style = "left:18rem; bottom:3rem"> C </button>
+                            <button type="button" class="button bin-btn sepSourceBtn" value="A" style = "left:4rem; bottom:3rem" disabled> A </button>
+                            <button type="button" class="button bin-btn sepSourceBtn" value="B" style = "left:11rem; bottom:3rem" disabled=""> B </button>
+                            <button type="button" class="button bin-btn sepSourceBtn" value="C" style = "left:18rem; bottom:3rem" disabled=""> C </button>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-success" id="review-btn" onclick="reviewPrint()">Review & Print</button>
+                    <button type="button" class="btn btn-success" id="review-btn" onclick="reviewPrint()" disabled>Review & Print</button>
                 </div>
             </div>
 

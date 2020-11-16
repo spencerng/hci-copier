@@ -1,6 +1,7 @@
 var data;
 var copiesField, brightnessField;
 var btnGroups = ['side', 'sep', 'source', 'sepSource']
+var pages = 0; //for printing animation use only
 
 function onLoad() {
 	data = { copies: 1, brightness: 3, side: null, source: null, sep: null, sepSource: null }
@@ -95,6 +96,20 @@ function logout(){
 	onLoad();
 }
 
+//printing animation and update
+function printAnimation(){
+	printInc = 100/data.copies;
+	if (document.getElementById('printProgress').value < 100){
+		pages += 1;
+		document.getElementById('printProgress').value += printInc;
+		document.getElementById('printLabel').innerHTML = "Print Progress: Page " + String(pages) + " of " + data.copies; 
+	}
+	else{
+		document.getElementById('completeMessage').hidden = false;
+	}
+}
+
+
 //button to submit printInformation and review print job
 function reviewPrint() {
 	replace('printOptionsScreen', 'reviewPrintScreen');
@@ -104,6 +119,9 @@ function reviewPrint() {
 	document.getElementById('accNum').innerHTML = data.accountNum;
 	document.getElementById('pageNum').innerHTML = data.copies;
 	// document.getElementById('brightness').innerHTML = data.brightness;
+	//update printing animation
+	document.getElementById('printLabel').innerHTML = "Print Progress: Page 0 of " + data.copies; 
+	setInterval(printAnimation, 1000);
 }
 
 //return to printOptionsScreen input

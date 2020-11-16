@@ -2,6 +2,14 @@ var data;
 
 function onLoad() {
 	data = { copies: 1 }
+	var copiesField = document.getElementById("copies")
+	copiesField.value = 1;
+	document.getElementById("plusCopyBtn").onclick = function () { copiesField.value += (+1); }
+	document.getElementById("minusCopyBtn").onclick = function () { 
+		if (copiesField.value != 1) {
+			copiesField.value -= 1;
+		}
+	}
 }
 
 function keyPress(value){

@@ -133,6 +133,10 @@ top: 3rem;
   font-size: 2rem;
 }
 
+.progressBar{
+	height: 5rem;
+	width: 50rem;
+
 .touchscreen_border {
   position: relative;
   margin: 2rem auto;

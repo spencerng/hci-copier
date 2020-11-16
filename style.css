@@ -80,7 +80,8 @@ html, body {
 }
 
 .sideBtn:hover {
-background-color:lightgray;
+  /* background-color:lightgray; */
+  cursor: pointer;
 }
 
 .icon {
@@ -105,8 +106,8 @@ top: 3rem;
 }
 
 .bin-btn:hover {
-  background-color:lightgray;
-  }
+  /* background-color:lightgray;*/
+}
 
 #copies{
   position:absolute;
@@ -149,7 +150,7 @@ top: 3rem;
 
 
 
-:active {
+.active {
   /* pls change this idk what i'm doing */
   background-color: green;
 }

@@ -11,8 +11,9 @@
         <title>Copier UI Prototype</title>
     </head>
     <body onload="onLoad()">
+      <div class="touchscreen_border">
         <div class="no_style" id = "enterAccountScreen">
-            <h3>Enter Account Code to begin:</h3>
+            <h3>Enter Account Code to Begin:</h3>
             <div class="btn-group-vertical ml-4 mt-4" role="group">
                 <div class="btn-group">
                     <input class="input-box text-center" id="code" maxlength="4" disabled>
@@ -53,9 +54,9 @@
                     <!--Num Copies-->
                     <div class = "box" style= "height:225px">
                         <div class="title"style="width:115px"> # of Copies </div>
-                        <button type="button" class="button" id="bin-btn" style = "left:2rem;top:6rem"> - </button>
-                        <input class="text-center" id="copies" maxlength="2" style="position:absolute; top:6rem" disabled>
-                        <button type="button" class="button" id="bin-btn" style = "right:2rem;top:6rem"> + </button>
+                        <button type="button" class="button bin-btn" id="minusCopyBtn" style = "left:2rem;top:6rem"> - </button>
+                        <input class="text-center" id="copies" maxlength="2" style="position:absolute; top:6rem" value="1" disabled>
+                        <button type="button" class="button bin-btn" id="plusCopyBtn" style = "right:2rem;top:6rem"> + </button>
                     </div>
                     <!--Brightness-->
                     <div class = "box" style= "height:225px">
@@ -98,21 +99,21 @@
                     <!--Paper Source-->
                     <div class = "box" style= "height:100px">
                         <div class="title" style="width:140px"> Paper Source </div>
-                        <button type="button" class="button" id="bin-btn" style = "left:4rem"> A </button>
-                        <button type="button" class="button" id="bin-btn" style = "left:11rem"> B </button>
-                        <button type="button" class="button" id="bin-btn" style = "left:18rem"> C </button>
+                        <button type="button" class="button bin-btn" id="" style = "left:4rem"> A </button>
+                        <button type="button" class="button bin-btn" id="" style = "left:11rem"> B </button>
+                        <button type="button" class="button bin-btn" id="" style = "left:18rem"> C </button>
                     </div>
                     <div class = "box" style= "height:220px">
                         <div class="title"> Seperator Page </div>
                         <div>
-                            <button type="button" class="button" id="bin-btn" style = "left:7rem"> Yes </button>
-                            <button type="button" class="button" id="bin-btn" style = "left:14rem"> No </button>
+                            <button type="button" class="button bin-btn" id="" style = "left:7rem"> Yes </button>
+                            <button type="button" class="button bin-btn" id="" style = "left:14rem"> No </button>
                         </div>
                         <div style="position:absolute; top:8rem; left:2rem; font-size:20px;"> Paper Source</div>
                         <div>
-                            <button type="button" class="button" id="bin-btn" style = "left:4rem; bottom:3rem"> A </button>
-                            <button type="button" class="button" id="bin-btn" style = "left:11rem; bottom:3rem"> B </button>
-                            <button type="button" class="button" id="bin-btn" style = "left:18rem; bottom:3rem"> C </button>
+                            <button type="button" class="button bin-btn" style = "left:4rem; bottom:3rem"> A </button>
+                            <button type="button" class="button bin-btn" style = "left:11rem; bottom:3rem"> B </button>
+                            <button type="button" class="button bin-btn" style = "left:18rem; bottom:3rem"> C </button>
                         </div>
                     </div>
                     <button type="button" class="btn btn-success" id="review-btn" onclick="reviewPrint()">Review & Print</button>
@@ -164,5 +165,8 @@
 	<br><br>
 	<div style="font-size:2rem;">Print Progress</div>
 	<progress id="printProgress" value="0" max="100" class="progressBar"></progress>
+
+  </div>
+</div>
     </body>
 </html>

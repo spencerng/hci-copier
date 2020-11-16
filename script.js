@@ -1,7 +1,7 @@
 var data;
 
 function onLoad() {
-	data = {}
+	data = { copies: 1 }
 }
 
 function keyPress(value){

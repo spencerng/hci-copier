@@ -2,6 +2,7 @@ var data;
 var copiesField, brightnessField;
 var btnGroups = ['side', 'sep', 'source', 'sepSource']
 var pages = 0; //for printing animation use only
+var abortPrint = false;
 
 function onLoad() {
 	data = { copies: 1, brightness: 0, side: null, source: null, sep: null, sepSource: null }
@@ -135,28 +136,31 @@ function logout(){
 
 //printing animation and update
 async function printAnimation(){
+	abortPrint = false;
 	var bar = document.getElementById('printProgress');
 	var printInc = 100/data.copies;
 	var pages = 1;
 
 	bar.value = 0
 	document.getElementById('printLabel').innerHTML = "Copy " + String(pages) + " of " + data.copies; 
-	await sleep(1500)
+	await sleep(1250)
 	while (pages < data.copies + 1){
 		document.getElementById('printLabel').innerHTML = "Copy " + String(pages) + " of " + data.copies; 
 		await sleep(1000);
 		document.getElementById('printProgress').value += printInc;
 		
-		if (bar.value >= 100) {
+		if (bar.value >= 100 || abortPrint) {
 			break;
 		}
 
 		pages += 1;
 
 	}
-	await sleep(1500);
-	replace('printingScreen', 'doneScreen');
-	document.getElementById('completeMessage').hidden = false;
+	if (!abortPrint) {
+		await sleep(1500);
+		replace('printingScreen', 'doneScreen');
+		document.getElementById('completeMessage').hidden = false;
+	}
 }
 
 
@@ -201,7 +205,6 @@ async function reviewPrint() {
 		document.getElementById('seperator').innerHTML = "None"
 	}
 	
-	printAnimation();
 
 }
 
@@ -221,6 +224,7 @@ function returnScreen3(){
 //print page
 function confirmPrint(){
 	replace('reviewPrintScreen', 'printingScreen');
+	printAnimation();
 }
 
 //do another complete job following completion
@@ -245,4 +249,9 @@ function printAgain() {
 	onLoad();
 	data.accountNum = accountNum;
 	inputScreen();
+}
+
+function cancelPrint() {
+	abortPrint = true;
+	returnScreen3();
 }

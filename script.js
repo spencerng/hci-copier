@@ -1,6 +1,10 @@
 //when keypad is pressed
 var accountNum;
 
+function onLoad() {
+	
+}
+
 function keyPress(value){
 	//backspace is pressed
 	if (value == -1){

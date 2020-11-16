@@ -59,9 +59,16 @@
                     </div>
                     <!--Brightness-->
                     <div class = "box" style= "height:225px">
-                        <div class="title" style="width:100px"> Brightness </div>
-                        <input type="range" id="brightness" name="brightness" min="-2" max="+2"
-                            style="position:absolute; top:5rem; left:2rem; width:15rem;">
+                      <div class="title" style="width:100px"> Brightness </div>
+                      <input type="range" id="brightness" name="brightness" min="-2" max="2" step="1" value="0"
+                      list="settings" style="position:absolute; top:5rem; left:5rem; width:15rem;">
+                      <datalist id="settings">
+                        <option>-2</option>
+                        <option>-1</option>
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                      </datalist>
                     </div>
                 </div>
                 <!--Column 2-->
@@ -111,7 +118,10 @@
                     <button type="button" class="btn btn-success" id="review-btn" onclick="reviewPrint()">Review & Print</button>
                 </div>
             </div>
-        </div>
+
+    </div>
+
+
         <div class="container" id="reviewPrintScreen" hidden>
             <title>Review Print</title>
             <h1>Review Print</h1>
@@ -134,7 +144,7 @@
                 <button type="button" style="width: 155px;height: 30px;font-size: 15px;" onclick="returnScreen2()">Make Changes</button>
             </div>
         </div>
-        <div class="container" id="screen4" hidden>
+        <div class="container" id="printingScreen" hidden>
             <title>Print Page</title>
             <h1>Print Page</h1>
             <h1>You have completed your print!</h1>

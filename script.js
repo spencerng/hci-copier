@@ -47,5 +47,5 @@ function returnScreen2(){
 
 //print page
 function confirmPrint(){
-	replace('reviewPrintScreen', 'printOptionsScreen')
+	replace('reviewPrintScreen', 'printingScreen')
 }

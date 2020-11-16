@@ -45,9 +45,9 @@
             </div>
         </div>
         <div class="container" id="printOptionsScreen" hidden>
-            <div style="text-align: left;" id="account#">Account number: XXXX</div>
+            <div class="account_num_display" id="account#">Account number: XXXX</div>
             <button type="button" class="btn btn-danger" id="cancel-button" onclick="logout()">Cancel & Logout</button>
-            <h1>Copy Options</h1>
+            <h1 style="margin-top: 5.5rem;">Copy Options</h1>
             <div>
                 <!--Column 1-->
                 <div class="option_col">
@@ -55,7 +55,7 @@
                     <div class = "box" style= "height:225px">
                         <div class="title"style="width:115px"> # of Copies </div>
                         <button type="button" class="button bin-btn" id="minusCopyBtn" style = "left:2rem;top:6rem; font-size: 30px;"> - </button>
-                        <input min="1" value="1" class="input-box text-center" id="copies" style="position:absolute; left: 10.75rem; top:7rem;" disabled>
+                        <input min="1" value="1" class="input-box text-center" id="copies" style="position:absolute; left: 10.75rem; top:7rem; font-size: 25px;" disabled>
                         <button type="button" class="button bin-btn" id="plusCopyBtn" style = "right:2rem;top:6rem; font-size: 30px;"> + </button>
                     </div>
                     <!--Brightness-->
@@ -74,7 +74,7 @@
                 </div>
                 <!--Column 2-->
                 <div class="option_col">
-                    <div class = "box" style= "height:490px">
+                    <div class = "box" style= "height:480px">
                         <div class="title" style="width:60px"> Sides </div>
                         <div class="sideBtn" id="1-1" style="margin-top:20px; position:relative">
                             <img src="icons/1_1.png" class="icon">

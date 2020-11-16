@@ -134,21 +134,34 @@ function logout(){
 }
 
 //printing animation and update
-function printAnimation(){
-	printInc = 100/data.copies;
-	if (document.getElementById('printProgress').value < 100){
-		pages += 1;
+async function printAnimation(){
+	var bar = document.getElementById('printProgress');
+	var printInc = 100/data.copies;
+	var pages = 1;
+
+	bar.value = 0
+	await sleep(1000)
+	while (bar.value < 100){
+		document.getElementById('printLabel').innerHTML = "Copy " + pages + " of " + data.copies; 
+		await sleep(1000)
 		document.getElementById('printProgress').value += printInc;
-		document.getElementById('printLabel').innerHTML = "Print Progress: Copy " + String(pages) + " of " + data.copies; 
+		
+		if (bar.value >= 100) {
+			break;
+		}
+		pages += 1;
+		
 	}
-	else{
-		document.getElementById('completeMessage').hidden = false;
-	}
+	
+	document.getElementById('completeMessage').hidden = false;
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 //button to submit printInformation and review print job
-function reviewPrint() {
+async function reviewPrint() {
 	replace('printOptionsScreen', 'reviewPrintScreen');
 	data.copies = copiesField.value;
 	data.brightness = brightnessField.value;
@@ -183,9 +196,8 @@ function reviewPrint() {
 		document.getElementById('seperator').innerHTML = "None"
 	}
 
-	//update printing animation
-	document.getElementById('printLabel').innerHTML = "Print Progress: Page 0 of " + data.copies; 
-	setInterval(printAnimation, 1000);
+	
+	printAnimation();
 }
 
 //return to printOptionsScreen input

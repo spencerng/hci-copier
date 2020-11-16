@@ -72,8 +72,15 @@
       <!--Brightness-->
       <div class = "box" style= "height:225px">
         <div class="title" style="width:100px"> Brightness </div>
-        <input type="range" id="brightness" name="brightness" min="-2" max="+2"
-        style="position:absolute; top:5rem; left:2rem; width:15rem;">
+        <input type="range" id="brightness" name="brightness" min="-2" max="2" step="1" value="0"
+        list="settings" style="position:absolute; top:5rem; left:5rem; width:15rem;">
+        <datalist id="settings">
+          <option>-2</option>
+          <option>-1</option>
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+        </datalist>
       </div>
     </div>
 

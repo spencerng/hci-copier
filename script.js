@@ -8,7 +8,7 @@ function onLoad() {
 	data = { copies: 1, brightness: 0, side: null, source: null, sep: null, sepSource: null }
 
 	removeActive("");
-
+	document.getElementById('accountNextBtn').disabled = true;
 	copiesField = document.getElementById("copies");
 	copiesField.value = data.copies;
 	brightnessField = document.getElementById("brightnessSlider");

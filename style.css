@@ -27,6 +27,7 @@ html, body {
 .box {
   position:relative;
   border: 2px solid black;
+  border-radius: 0.5rem;
   margin: 0 0 3rem;
 }
 
@@ -73,28 +74,30 @@ html, body {
   left:135px;
 }
 
-#side {
-  margin: 12px;
+.sideBtn {
+  margin: 1.25rem 1.5rem;
   border: 2px solid black;
+  border-radius: 5px;
   height: 100px;
 }
 
-#side:hover {
+.sideBtn:hover {
 background-color:lightgray;
 }
 
 .icon {
-  width:150px;
-  height:70px;
+  width:120px;
+  height:55px;
   position:absolute;
-  left:5px;
-  top:10px;
+  left:2rem;
+  top:1.75rem;
 }
 
 .box-text{
-position:absolute;
-right: 4rem;
-top: 3rem;
+  font-size: 20px;
+  position:absolute;
+  right: 4rem;
+  top: 3rem;
 }
 
 .bin-btn {
@@ -147,6 +150,9 @@ top: 3rem;
   border: 1px solid black;
 }
 
-#printOptionsScreen {
-  min-width: 1080px;
+
+
+:active {
+  /* pls change this idk what i'm doing */
+  background-color: green;
 }

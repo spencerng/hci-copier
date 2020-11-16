@@ -2,6 +2,7 @@ var data;
 var copiesField, brightnessField;
 var btnGroups = ['side', 'sep', 'source', 'sepSource']
 var pages = 0; //for printing animation use only
+var abortPrint = false;
 
 function onLoad() {
 	data = { copies: 1, brightness: 0, side: null, source: null, sep: null, sepSource: null }
@@ -134,25 +135,42 @@ function logout(){
 }
 
 //printing animation and update
-var timer;
-function printAnimation(){
-	printInc = 100/data.copies;
-	if (document.getElementById('printProgress').value < 100){
-		pages += 1;
+async function printAnimation(){
+	abortPrint = false;
+	var bar = document.getElementById('printProgress');
+	var printInc = 100/data.copies;
+	var pages = 1;
+
+	bar.value = 0
+	document.getElementById('printLabel').innerHTML = "Copy " + String(pages) + " of " + data.copies; 
+	await sleep(1250)
+	while (pages < data.copies + 1){
+		document.getElementById('printLabel').innerHTML = "Copy " + String(pages) + " of " + data.copies; 
+		await sleep(1000);
 		document.getElementById('printProgress').value += printInc;
-		document.getElementById('printLabel').innerHTML = "Print Progress: Copy " + String(pages) + " of " + data.copies; 
+		
+		if (bar.value >= 100 || abortPrint) {
+			break;
+		}
+
+		pages += 1;
+
 	}
-	else{
-		// document.getElementById('completeMessage').hidden = false;
-		// document.getElementById('cancelPrint').hidden = true;
+	if (!abortPrint) {
+		await sleep(1500);
 		replace('printingScreen', 'doneScreen');
-		clearInterval(timer);
+		document.getElementById('completeMessage').hidden = false;
 	}
 }
 
-//button to submit printInformation and review print job
 
-function reviewPrint() {
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+//button to submit printInformation and review print job
+async function reviewPrint() {
+
 	replace('printOptionsScreen', 'reviewPrintScreen');
 	data.copies = copiesField.value;
 	data.brightness = brightnessField.value;
@@ -186,10 +204,8 @@ function reviewPrint() {
 	} else {
 		document.getElementById('seperator').innerHTML = "None"
 	}
+	
 
-	//update printing animation
-	document.getElementById('printLabel').innerHTML = "Print Progress: Page 0 of " + data.copies; 
-	timer = setInterval(printAnimation, 1000);
 }
 
 //return to printOptionsScreen input
@@ -208,6 +224,7 @@ function returnScreen3(){
 //print page
 function confirmPrint(){
 	replace('reviewPrintScreen', 'printingScreen');
+	printAnimation();
 }
 
 //do another complete job following completion
@@ -225,4 +242,16 @@ function logoutScreen(){
 	pages = 0;
 	replace('doneScreen', 'enterAccountScreen');
 	onLoad();
+}
+
+function printAgain() {
+	var accountNum = data.accountNum;
+	onLoad();
+	data.accountNum = accountNum;
+	inputScreen();
+}
+
+function cancelPrint() {
+	abortPrint = true;
+	returnScreen3();
 }

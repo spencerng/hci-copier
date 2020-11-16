@@ -116,7 +116,7 @@ function keyPress(value){
 	} else if (codeLen == 4 && value == -3) {
 		data.accountNum = codeBox.value
 		replace('enterAccountScreen', 'printOptionsScreen')
-		document.getElementById('account#').innerHTML = "Account number: " + data.accountNum;
+		document.getElementById('account#').innerHTML = "Account Code: " + data.accountNum;
 	}
 	
 	var nextButton = document.getElementById('accountNextBtn');

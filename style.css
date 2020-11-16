@@ -100,3 +100,12 @@ top: 3rem;
   left:105px;
   top:4rem;
 }
+
+#no_style * {
+  all: initial;
+}
+
+.keypad{
+    width:40px;
+
+}

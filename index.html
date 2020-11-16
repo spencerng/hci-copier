@@ -160,9 +160,18 @@
 		<h1>Print Page</h1>
 		<!-- Progress Bar -->
 		<br><br>
+		<button type="button" style="width: 295px;height: 50px;font-size: 25px;" onclick="returnScreen3()" id="cancelPrint">Cancel</button>
 		<div style="font-size:2rem;" id="printLabel">Print Progress: Page 0 of NA</div>
 		<progress id="printProgress" value="0" max="100" class="progressBar"></progress>
 		<h1 id="completeMessage" hidden>You have completed your print!</h1>
+	</div>
+	
+	<div class="container" id="doneScreen" hidden>
+		<title>Printing Done</title>
+		<br><br>
+		<h1>Your Print Job is Completed!</h1>
+		<button type="button" id="printAgain" onclick="inputScreen()">Print Again</button>
+		<button type="button" onclick="logoutScreen()">Logout</button>
 	</div>
 
   </div>

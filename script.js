@@ -88,6 +88,7 @@ function logout(){
 }
 
 //printing animation and update
+var timer;
 function printAnimation(){
 	printInc = 100/data.copies;
 	if (document.getElementById('printProgress').value < 100){
@@ -97,11 +98,14 @@ function printAnimation(){
 	}
 	else{
 		document.getElementById('completeMessage').hidden = false;
+		document.getElementById('cancelPrint').hidden = true;
+		replace('printingScreen', 'doneScreen');
+		clearInterval(timer);
 	}
 }
 
-
 //button to submit printInformation and review print job
+
 function reviewPrint() {
 	replace('printOptionsScreen', 'reviewPrintScreen');
 	data.copies = copiesField.value;
@@ -112,15 +116,39 @@ function reviewPrint() {
 	// document.getElementById('brightness').innerHTML = data.brightness;
 	//update printing animation
 	document.getElementById('printLabel').innerHTML = "Print Progress: Page 0 of " + data.copies; 
-	setInterval(printAnimation, 1000);
+	timer = setInterval(printAnimation, 1000);
 }
 
 //return to printOptionsScreen input
 function returnScreen2(){
-	replace('reviewPrintScreen', 'printOptionsScreen')
+	replace('reviewPrintScreen', 'printOptionsScreen');
+}
+
+//return to options screen from review printing screen
+function returnScreen3(){
+	replace('printingScreen', 'reviewPrintScreen');
+	pages = 0;
+	document.getElementById('printProgress').value = 0;
 }
 
 //print page
 function confirmPrint(){
-	replace('reviewPrintScreen', 'printingScreen')
+	replace('reviewPrintScreen', 'printingScreen');
+}
+
+//do another complete job following completion
+function inputScreen(){
+	document.getElementById('completeMessage').hidden = true;
+	document.getElementById('printProgress').value = 0;
+	pages = 0;
+	replace('doneScreen', 'printOptionsScreen');
+}
+
+//logout after completion
+function logoutScreen(){
+	document.getElementById('completeMessage').hidden = true;
+	document.getElementById('printProgress').value = 0;
+	pages = 0;
+	replace('doneScreen', 'enterAccountScreen');
+	onLoad();
 }

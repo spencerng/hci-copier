@@ -4,13 +4,13 @@ var btnGroups = ['side', 'sep', 'source', 'sepSource']
 var pages = 0; //for printing animation use only
 
 function onLoad() {
-	data = { copies: 1, brightness: 3, side: null, source: null, sep: null, sepSource: null }
+	data = { copies: 1, brightness: 0, side: null, source: null, sep: null, sepSource: null }
 
 	removeActive("");
 
 	copiesField = document.getElementById("copies");
 	copiesField.value = data.copies;
-	brightnessField = document.getElementById("brightness");
+	brightnessField = document.getElementById("brightnessSlider");
 	brightnessField.value = data.brightness;
 
 	document.getElementById("plusCopyBtn").onclick = function () { 
@@ -43,12 +43,49 @@ function registerGroup(className) {
 	}
 }
 
-function checkSepSourceEnable () {
+function getGroupValue(className) {
+	var elements = document.getElementsByClassName(className)
+	for (var i = 0; i < elements.length; i++) {
+		if (elements[i].className.includes("active")) {
+			if (elements[i].value != undefined) {
+				return elements[i].value;
+			} else {
+				return elements[i].id;
+			}
+			
+		}
+	}
 
+	return "";
+}
+
+function checkSepSourceEnable () {
+	var sepLabel = document.getElementById("sepSourceLabel")
+	if (getGroupValue("sepBtn") === "Yes") {
+		disableClass("sepSourceBtn", false)
+		sepLabel.classList.remove("disable-text")
+	} else {
+		removeActive("sepSourceBtn")
+		disableClass("sepSourceBtn", true)
+		sepLabel.className += " disable-text"
+	}
+}
+
+function disableClass(className, disable) {
+	var elements = document.getElementsByClassName(className)
+	for (var i = 0; i < elements.length; i++) {
+		elements[i].disabled = disable;
+	}
 }
 
 function checkPrintBtnEnable () {
-
+	reviewBtn = document.getElementById("review-btn")
+	if (getGroupValue("sideBtn") !== "" && getGroupValue("sourceBtn") !== "" && (getGroupValue("sepBtn") === "No" 
+		|| getGroupValue("sepSourceBtn") !== "")) {
+		reviewBtn.disabled = false;
+	} else {
+		reviewBtn.disabled = true;
+	}
 }
 
 function removeActive(filterClass) {
@@ -97,39 +134,95 @@ function logout(){
 }
 
 //printing animation and update
+var timer;
 function printAnimation(){
 	printInc = 100/data.copies;
 	if (document.getElementById('printProgress').value < 100){
 		pages += 1;
 		document.getElementById('printProgress').value += printInc;
-		document.getElementById('printLabel').innerHTML = "Print Progress: Page " + String(pages) + " of " + data.copies; 
+		document.getElementById('printLabel').innerHTML = "Print Progress: Copy " + String(pages) + " of " + data.copies; 
 	}
 	else{
-		document.getElementById('completeMessage').hidden = false;
+		// document.getElementById('completeMessage').hidden = false;
+		// document.getElementById('cancelPrint').hidden = true;
+		replace('printingScreen', 'doneScreen');
+		clearInterval(timer);
 	}
 }
 
-
 //button to submit printInformation and review print job
+
 function reviewPrint() {
 	replace('printOptionsScreen', 'reviewPrintScreen');
 	data.copies = copiesField.value;
 	data.brightness = brightnessField.value;
+	data.side = getGroupValue('sideBtn')
+	data.sep = getGroupValue('sepBtn')
+	data.source = getGroupValue('sourceBtn')
+	data.sepSource = getGroupValue('sepSourceBtn')
+	
+
 	//set all information on info page to match with data
 	document.getElementById('accNum').innerHTML = data.accountNum;
 	document.getElementById('pageNum').innerHTML = data.copies;
-	// document.getElementById('brightness').innerHTML = data.brightness;
+
+	var brightnessVal = data.brightness;
+
+	if (brightnessVal > 0) {
+		brightnessVal = "+" + brightnessVal + " (brighter)"
+	} else if (brightnessVal < 0) {
+		brightnessVal += " (darker)"
+	} else {
+		brightnessVal += " (default)"
+	}
+
+	document.getElementById('brightness').innerHTML = brightnessVal;
+
+	document.getElementById('sideOpt').innerHTML = data.side.split("-")[0] + " &xrarr; " + data.side.split("-")[1]
+	document.getElementById('paperBin').innerHTML = "Bin " + data.source;
+
+	if (data.sep === "Yes") {
+		document.getElementById('seperator').innerHTML = "From Bin " + data.sepSource;
+	} else {
+		document.getElementById('seperator').innerHTML = "None"
+	}
+
 	//update printing animation
 	document.getElementById('printLabel').innerHTML = "Print Progress: Page 0 of " + data.copies; 
-	setInterval(printAnimation, 1000);
+	timer = setInterval(printAnimation, 1000);
 }
 
 //return to printOptionsScreen input
 function returnScreen2(){
-	replace('reviewPrintScreen', 'printOptionsScreen')
+	replace('reviewPrintScreen', 'printOptionsScreen');
+}
+
+//return to options screen from review printing screen
+function returnScreen3(){
+	replace('printingScreen', 'reviewPrintScreen');
+	document.getElementById('completeMessage').hidden = true;
+	pages = 0;
+	document.getElementById('printProgress').value = 0;
 }
 
 //print page
 function confirmPrint(){
-	replace('reviewPrintScreen', 'printingScreen')
+	replace('reviewPrintScreen', 'printingScreen');
+}
+
+//do another complete job following completion
+function inputScreen(){
+	document.getElementById('completeMessage').hidden = true;
+	document.getElementById('printProgress').value = 0;
+	pages = 0;
+	replace('doneScreen', 'printOptionsScreen');
+}
+
+//logout after completion
+function logoutScreen(){
+	document.getElementById('completeMessage').hidden = true;
+	document.getElementById('printProgress').value = 0;
+	pages = 0;
+	replace('doneScreen', 'enterAccountScreen');
+	onLoad();
 }

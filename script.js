@@ -37,7 +37,6 @@ function keyPress(value){
 	} else if (codeLen == 4 && value == -3) {
 		data.accountNum = codeBox.value
 		replace('enterAccountScreen', 'printOptionsScreen')
-		document.getElementById('printProgress').value = 33;
 		document.getElementById('account#').innerHTML = "Account number: " + data.accountNum;
 	}
 	
@@ -53,29 +52,26 @@ function replace(idToHide, idToShow) {
 //logout back to account enterAccountScreen
 function logout(){
 	replace('printOptionsScreen', 'enterAccountScreen');
-	document.getElementById('printProgress').value = 0;
 	onLoad();
 }
 
 //button to submit printInformation and review print job
 function reviewPrint() {
 	replace('printOptionsScreen', 'reviewPrintScreen');
-	//set accountNum in review page
-	document.getElementById('accNum').innerHTML = data.accountNum;
 	data.copies = copiesField.value;
 	data.brightness = brightnessField.value;
-
-	document.getElementById('printProgress').value = 66;
+	//set all information on info page to match with data
+	document.getElementById('accNum').innerHTML = data.accountNum;
+	document.getElementById('pageNum').innerHTML = data.copies;
+	// document.getElementById('brightness').innerHTML = data.brightness;
 }
 
 //return to printOptionsScreen input
 function returnScreen2(){
 	replace('reviewPrintScreen', 'printOptionsScreen')
-	document.getElementById('printProgress').value = 33;
 }
 
 //print page
 function confirmPrint(){
 	replace('reviewPrintScreen', 'printingScreen')
-	document.getElementById('printProgress').value = 100;
 }

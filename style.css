@@ -135,7 +135,8 @@ top: 3rem;
 
 .progressBar{
 	height: 5rem;
-	width: 50rem;
+  width: 50rem;
+}
 
 .touchscreen_border {
   position: relative;

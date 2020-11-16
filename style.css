@@ -217,3 +217,7 @@ html, body {
 .brightness_nums span {
   margin: 1.65rem;
 }
+
+.sepSourceBtn:disabled {
+  color: #BBB
+}

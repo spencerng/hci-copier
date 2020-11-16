@@ -53,9 +53,9 @@
                     <!--Num Copies-->
                     <div class = "box" style= "height:225px">
                         <div class="title"style="width:115px"> # of Copies </div>
-                        <button type="button" class="button" id="bin-btn" style = "left:2rem;top:3rem"> - </button>
-                        <input class="text-center" id="copies" maxlength="2" style="position:absolute" disabled>
-                        <button type="button" class="button" id="bin-btn" style = "right:2rem;top:3rem"> + </button>
+                        <button type="button" class="button" id="bin-btn" style = "left:2rem;top:6rem"> - </button>
+                        <input class="text-center" id="copies" maxlength="2" style="position:absolute; top:6rem" disabled>
+                        <button type="button" class="button" id="bin-btn" style = "right:2rem;top:6rem"> + </button>
                     </div>
                     <!--Brightness-->
                     <div class = "box" style= "height:225px">
@@ -98,21 +98,21 @@
                     <!--Paper Source-->
                     <div class = "box" style= "height:100px">
                         <div class="title" style="width:140px"> Paper Source </div>
-                        <button type="button" class="button" id="bin-btn" style = "left:2rem"> A </button>
-                        <button type="button" class="button" id="bin-btn" style = "left:7rem"> B </button>
-                        <button type="button" class="button" id="bin-btn" style = "left:12rem"> C </button>
+                        <button type="button" class="button" id="bin-btn" style = "left:4rem"> A </button>
+                        <button type="button" class="button" id="bin-btn" style = "left:11rem"> B </button>
+                        <button type="button" class="button" id="bin-btn" style = "left:18rem"> C </button>
                     </div>
                     <div class = "box" style= "height:220px">
                         <div class="title"> Seperator Page </div>
                         <div>
-                            <button type="button" class="button" id="bin-btn" style = "left:4rem"> Yes </button>
-                            <button type="button" class="button" id="bin-btn" style = "left:9rem"> No </button>
+                            <button type="button" class="button" id="bin-btn" style = "left:7rem"> Yes </button>
+                            <button type="button" class="button" id="bin-btn" style = "left:14rem"> No </button>
                         </div>
-                        <div style="position:absolute; top:7rem; left:2rem; font-size:20px;"> Paper Source</div>
+                        <div style="position:absolute; top:8rem; left:2rem; font-size:20px;"> Paper Source</div>
                         <div>
-                            <button type="button" class="button" id="bin-btn" style = "left:2rem; bottom:1px"> A </button>
-                            <button type="button" class="button" id="bin-btn" style = "left:7rem; bottom:1px"> B </button>
-                            <button type="button" class="button" id="bin-btn" style = "left:12rem; bottom:1px"> C </button>
+                            <button type="button" class="button" id="bin-btn" style = "left:4rem; bottom:3rem"> A </button>
+                            <button type="button" class="button" id="bin-btn" style = "left:11rem; bottom:3rem"> B </button>
+                            <button type="button" class="button" id="bin-btn" style = "left:18rem; bottom:3rem"> C </button>
                         </div>
                     </div>
                     <button type="button" class="btn btn-success" id="review-btn" onclick="reviewPrint()">Review & Print</button>
@@ -121,33 +121,43 @@
 
     </div>
 
-
-        <div class="container" id="reviewPrintScreen" hidden>
-            <title>Review Print</title>
-            <h1>Review Print</h1>
-            <div>
-                <div class = "box" style= "height:210px;width:500px;display: block;margin-left: auto;
-                    margin-right: auto;">
-                    <div class="title" style="width:200px">Review Information</div>
-                    <!--Print Information-->
-                    <br>
-                    <div style="text-align:left;font-size:25px;">
-                        <div id="pageNum">Page Number: X</div>
-                        <div id="brightness">Brightness: X</div>
-                        <div id="sideOpt">Side: X</div>
-                        <div id="paperBin">Paper Source Bin (A,B,C): X</div>
-                        <div id="seperator?">Separator Page?: Yes/No</div>
-                        <div id="seperatorBin">Separator Source (A,B,C): X</div>
-                    </div>
-                </div>
-                <button type="button" style="width: 295px;height: 50px;font-size: 25px;" onclick="confirmPrint()">Confirm Print</button><br><br>
-                <button type="button" style="width: 155px;height: 30px;font-size: 15px;" onclick="returnScreen2()">Make Changes</button>
-            </div>
-        </div>
-        <div class="container" id="printingScreen" hidden>
-            <title>Print Page</title>
-            <h1>Print Page</h1>
-            <h1>You have completed your print!</h1>
-        </div>
+	<div class="container" id="reviewPrintScreen" hidden>
+		<title>Review Print</title>
+		<h1>Review Print</h1>
+		<div>
+			<div class = "box" style= "height:250px;width:600px;display: block;margin-left: auto;
+		  margin-right: auto;">
+				<div class="title" style="width:200px">Review Information</div>
+					<!--Print Information-->
+					<div class="row" style="font-size:20px;text-align:left;position:relative">
+					  <div class="column">
+						<div>Account Number: </div>
+						<div>Page Number: </div>
+						<div>Brightness: </div>
+						<div>Side: </div>
+						<div>Paper Source Bin (A,B,C): </div>
+						<div>Separator Page?: </div>
+						<div>Separator Source (A,B,C): </div>
+					  </div>
+					  <div class="column">
+						<div id="accountNum">X</div>
+						<div id="pageNum">X</div>
+						<div id="brightness">X</div>
+						<div id="sideOpt">X</div>
+						<div id="paperBin">X</div>
+						<div id="seperator?">Yes/No</div>
+						<div id="seperatorBin">X</div>
+					  </div>
+					</div>			
+			  </div>
+			<button type="button" style="width: 295px;height: 50px;font-size: 25px;" onclick="confirmPrint()">Confirm Print</button><br><br>
+			<button type="button" style="width: 155px;height: 30px;font-size: 15px;" onclick="returnScreen2()">Make Changes</button>
+		</div>
+	</div>
+	<div class="container" id="printingScreen" hidden>
+		<title>Print Page</title>
+		<h1>Print Page</h1>
+		<h1>You have completed your print!</h1>
+	</div>
     </body>
 </html>

@@ -98,7 +98,7 @@
                 <div class="option_col" style="position: relative;">
                     <!--Paper Source-->
                     <div class = "box" style= "height:100px">
-                        <div class="title" style="width:170px"> Paper Source Bin </div>
+                        <div class="title" style="width:140px"> Paper Source </div>
                         <button type="button" class="button bin-btn" id="" style = "left:4rem"> A </button>
                         <button type="button" class="button bin-btn" id="" style = "left:11rem"> B </button>
                         <button type="button" class="button bin-btn" id="" style = "left:18rem"> C </button>
@@ -109,7 +109,7 @@
                             <button type="button" class="button bin-btn" id="" style = "left:7rem"> Yes </button>
                             <button type="button" class="button bin-btn" id="" style = "left:14rem"> No </button>
                         </div>
-                        <div style="position:absolute; top:8rem; left:2rem; font-size:20px;"> Paper Source Bin </div>
+                        <div style="position:absolute; top:8rem; left:2rem; font-size:20px;"> Paper Source</div>
                         <div>
                             <button type="button" class="button bin-btn" style = "left:4rem; bottom:3rem"> A </button>
                             <button type="button" class="button bin-btn" style = "left:11rem; bottom:3rem"> B </button>
@@ -160,9 +160,9 @@
 		<h1>Print Page</h1>
 		<!-- Progress Bar -->
 		<br><br>
-		<div style="font-size:2rem;">Print Progress</div>
+		<div style="font-size:2rem;" id="printLabel">Print Progress: Page 0 of NA</div>
 		<progress id="printProgress" value="0" max="100" class="progressBar"></progress>
-		<h1>You have completed your print!</h1>
+		<h1 id="completeMessage" hidden>You have completed your print!</h1>
 	</div>
 
   </div>

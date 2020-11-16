@@ -136,7 +136,7 @@
 						<div>Account Number: </div>
 						<div># of Copies: </div>
 						<div>Brightness: </div>
-						<div>Side: </div>
+						<div>Sides: </div>
 						<div>Paper Source Bin: </div>
 						<div>Separator Page: </div>
 					  </div>
@@ -159,23 +159,22 @@
 		</div>
 	</div>
 	<div class="container" id="printingScreen" hidden>
-		<h1>Printing in Progress</h1>
+		<h1 style="margin: 17rem 0 5rem">Printing in Progress</h1>
 		<!-- Progress Bar -->
-		<br><br>
 		<div style="font-size:2rem;" id="printLabel">Page 0 of NA</div>
-
-		<button type="button" onclick="cancelPrint()" id="cancelPrint">Cancel</button>
-		
-		<progress id="printProgress" value="0" max="100" class="progressBar"></progress>
+		<div style="margin-bottom: 3rem">
+      <progress id="printProgress" value="0" max="100" class="progressBar"></progress>
+    </div>
+    <button type="button" class="btn largeBtn2" onclick="cancelPrint()" id="cancelPrint">Cancel</button>
 		<h1 id="completeMessage" hidden>Print Complete!</h1>
 	</div>
 	
-	<div class="container" id="doneScreen" hidden>
+  <div class="container" id="doneScreen" hidden>
 		<title>Printing Done</title>
 		<br><br>
-		<h1>Printing Finished!</h1>
-		<button type="button" id="printAgain" onclick="printAgain()">Copy Another Document</button>
-		<button type="button" onclick="logoutScreen()">Finish & Logout</button>
+		<h1 style="margin: 17rem 0 5rem;">Printing Finished!</h1>
+		<button type="button" class="btn largeBtn2" id="printAgain" onclick="printAgain()">Copy Another Document</button>
+		<button type="button" class="btn largeBtn2" onclick="logoutScreen()">Finish & Logout</button>
 	</div>
 
   </div>

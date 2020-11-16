@@ -188,3 +188,10 @@ html, body {
   margin: 0 2rem;
   height: 60px !important;
 }
+
+.largeBtn2 {
+  width: 30rem;
+  font-size: 20px;
+  margin: 0 2rem;
+  height: 60px !important;
+}

@@ -13,9 +13,9 @@
     <body onload="onLoad()">
         <div class="no_style" id = "enterAccountScreen">
             <h3>Enter Account Code to begin:</h3>
-            <div class="btn-group-vertical ml-4 mt-4" role="group" aria-label="Basic example">
+            <div class="btn-group-vertical ml-4 mt-4" role="group">
                 <div class="btn-group">
-                    <input class="text-center form-control-lg mb-2" id="code" maxlength="4" disabled>
+                    <input class="input-box text-center" id="code" maxlength="4" disabled>
                     <br>
                     <br>
                 </div>
@@ -40,7 +40,7 @@
                     <button type="button" class="keypad" onclick="keyPress(-1)">&xlarr;</button>
                 </div>
                 <br>
-                <button type="button" onclick="keyPress(-3)">Submit</button>
+                <button type="button" id="accountNextBtn" onclick="keyPress(-3)" class="btn btn-success" disabled>Next</button>
             </div>
         </div>
         <div class="container" id="printOptionsScreen" hidden>

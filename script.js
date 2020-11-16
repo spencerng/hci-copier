@@ -1,30 +1,31 @@
-//when keypad is pressed
-var accountNum;
+var data;
 
 function onLoad() {
-	
+	data = {}
 }
 
 function keyPress(value){
-	//backspace is pressed
-	if (value == -1){
-		document.getElementById('code').value=document.getElementById('code').value.slice(0, -1);
+	var codeBox = document.getElementById('code');
+	
+	if (value == -1){ //backspace is pressed
+		codeBox.value= codeBox.value.slice(0, -1);
+	} else if (value == -2){ //clear is pressed
+		codeBox.value = "";
 	}
-	//clear is pressed
-	else if (value == -2){
-		document.getElementById('code').value = "";
+
+	var codeLen = String(codeBox.value).length;
+	
+	if (codeLen < 4 && value >= 0 && value <= 9){
+		codeBox.value += String(value);
+		codeLen += 1;
+	} else if (codeLen == 4 && value == -3) {
+		data.accountNum = codeBox.value
+		replace('enterAccountScreen', 'printOptionsScreen')
+		document.getElementById('account#').innerHTML = "Account number: " + data.accountNum;
 	}
-	//keys 0-9 are pressed
-	else if ((String(document.getElementById('code').value).length) < 4 && value >= 0 && value <= 9){
-		document.getElementById('code').value += String(value);
-	}
-	//submit button is pressed
-	else if(value == -3 && (String(document.getElementById('code').value).length) == 4){
-		accountNum = document.getElementById('code').value
-		document.getElementById('enterAccountScreen').hidden=true;
-		document.getElementById('printOptionsScreen').hidden=false;
-		document.getElementById('account#').innerHTML = "Account number: " + accountNum;
-	}
+	
+	var nextButton = document.getElementById('accountNextBtn');
+	nextButton.disabled = codeLen < 4;
 }
 
 function replace(idToHide, idToShow) {

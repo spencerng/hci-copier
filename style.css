@@ -157,3 +157,7 @@ html, body {
   /* pls change this idk what i'm doing */
   background-color: green;
 }
+
+.disable-text {
+  color: #BBB
+}

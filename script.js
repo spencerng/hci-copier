@@ -4,6 +4,9 @@ var pages = 0; //for printing animation use only
 
 function onLoad() {
 	data = { copies: 1, brightness: 3 }
+
+	removeActive("");
+
 	copiesField = document.getElementById("copies");
 	copiesField.value = data.copies;
 	brightnessField = document.getElementById("brightness");
@@ -19,6 +22,34 @@ function onLoad() {
 	}
 
 	document.getElementById('code').value = "";
+
+	var btnGroups = ['sideBtn', 'sepBtn', 'sourceBtn', 'sepSourceBtn']
+
+	for (var i = 0; i < btnGroups.length; i++) {
+		registerGroup(btnGroups[i])
+	}
+
+}
+
+function registerGroup(className) {
+	var elements = document.getElementsByClassName(className)
+	for (var i = 0; i < elements.length; i++) {
+		elements[i].onclick = function () {
+			removeActive(className)
+
+			this.className += " active";
+		}
+	}
+}
+
+function removeActive(filterClass) {
+	var activeElements = document.getElementsByClassName("active")
+	for (var j = 0; j < activeElements.length; j++) {
+		if (filterClass == "" || (filterClass !== "" && activeElements[j].className.includes(filterClass))) {
+			activeElements[j].classList.remove("active");
+			j -= 1;
+		}
+	}
 }
 
 function keyPress(value){

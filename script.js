@@ -141,10 +141,10 @@ async function printAnimation(){
 
 	bar.value = 0
 	document.getElementById('printLabel').innerHTML = "Copy " + String(pages) + " of " + data.copies; 
-	await sleep(2000)
-	while (pages < data.copies){
+	await sleep(1500)
+	while (pages < data.copies + 1){
 		document.getElementById('printLabel').innerHTML = "Copy " + String(pages) + " of " + data.copies; 
-		await sleep(1500)
+		await sleep(1000);
 		document.getElementById('printProgress').value += printInc;
 		
 		if (bar.value >= 100) {
@@ -154,7 +154,7 @@ async function printAnimation(){
 		pages += 1;
 
 	}
-	await sleep(2000);
+	await sleep(1500);
 	replace('printingScreen', 'doneScreen');
 	document.getElementById('completeMessage').hidden = false;
 }

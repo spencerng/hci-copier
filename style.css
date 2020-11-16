@@ -132,3 +132,8 @@ top: 3rem;
   width: 18rem;
   font-size: 2rem;
 }
+
+.progressBar{
+	height: 5rem;
+	width: 50rem;
+}

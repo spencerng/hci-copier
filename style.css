@@ -195,3 +195,25 @@ html, body {
   margin: 0 2rem;
   height: 60px !important;
 }
+
+.brightness_icon {
+  margin-right: 5.9rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+.brightness_icons {
+  position: absolute;
+  top: 12rem;
+  left: 4.25rem;
+}
+
+.brightness_nums {
+  position: absolute;
+  top: 9rem;
+  left: 3rem;
+}
+
+.brightness_nums span {
+  margin: 1.65rem;
+}

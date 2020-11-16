@@ -121,33 +121,60 @@
 
     </div>
 
-
-        <div class="container" id="reviewPrintScreen" hidden>
-            <title>Review Print</title>
-            <h1>Review Print</h1>
-            <div>
-                <div class = "box" style= "height:210px;width:500px;display: block;margin-left: auto;
-                    margin-right: auto;">
-                    <div class="title" style="width:200px">Review Information</div>
-                    <!--Print Information-->
-                    <br>
-                    <div style="text-align:left;font-size:25px;">
-                        <div id="pageNum">Page Number: X</div>
-                        <div id="brightness">Brightness: X</div>
-                        <div id="sideOpt">Side: X</div>
-                        <div id="paperBin">Paper Source Bin (A,B,C): X</div>
-                        <div id="seperator?">Separator Page?: Yes/No</div>
-                        <div id="seperatorBin">Separator Source (A,B,C): X</div>
-                    </div>
-                </div>
-                <button type="button" style="width: 295px;height: 50px;font-size: 25px;" onclick="confirmPrint()">Confirm Print</button><br><br>
-                <button type="button" style="width: 155px;height: 30px;font-size: 15px;" onclick="returnScreen2()">Make Changes</button>
-            </div>
-        </div>
-        <div class="container" id="printingScreen" hidden>
-            <title>Print Page</title>
-            <h1>Print Page</h1>
-            <h1>You have completed your print!</h1>
-        </div>
+	<div class="container" id="reviewPrintScreen" hidden>
+		<title>Review Print</title>
+		<h1>Review Print</h1>
+		<div>
+			<div class = "box" style= "height:250px;width:600px;display: block;margin-left: auto;
+		  margin-right: auto;">
+				<div class="title" style="width:200px">Review Information</div>
+					<!--Print Information-->
+					<div class="row" style="font-size:20px;text-align:left;position:relative">
+					  <div class="column">
+						<div>Account Number: </div>
+						<div>Page Number: </div>
+						<div>Brightness: </div>
+						<div>Side: </div>
+						<div>Paper Source Bin (A,B,C): </div>
+						<div>Separator Page?: </div>
+						<div>Separator Source (A,B,C): </div>
+					  </div>
+					  <div class="column">
+						<div id="accountNum">X</div>
+						<div id="pageNum">X</div>
+						<div id="brightness">X</div>
+						<div id="sideOpt">X</div>
+						<div id="paperBin">X</div>
+						<div id="seperator?">Yes/No</div>
+						<div id="seperatorBin">X</div>
+					  </div>
+					</div>			
+			  </div>
+			<button type="button" style="width: 295px;height: 50px;font-size: 25px;" onclick="confirmPrint()">Confirm Print</button><br><br>
+			<button type="button" style="width: 155px;height: 30px;font-size: 15px;" onclick="returnScreen2()">Make Changes</button>
+		</div>
+	</div>
+	<div class="container" id="printingScreen" hidden>
+		<title>Print Page</title>
+		<h1>Print Page</h1>
+		<h1>You have completed your print!</h1>
+	</div>
     </body>
 </html>
+
+<style>
+	/* Create two equal columns that floats next to each other */
+	.column {
+	  float: left;
+	  width: 50%;
+	  padding: 25px;
+	  <!-- height: 300px; /* Should be removed. Only for demonstration */ -->
+	}
+
+	/* Clear floats after the columns */
+	.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+</style>

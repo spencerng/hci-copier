@@ -1,10 +1,13 @@
 var data;
-var copiesField;
+var copiesField, brightnessField;
 
 function onLoad() {
-	data = { copies: 1 }
-	copiesField = document.getElementById("copies")
-	copiesField.value = 1;
+	data = { copies: 1, brightness: 3 }
+	copiesField = document.getElementById("copies");
+	copiesField.value = data.copies;
+	brightnessField = document.getElementById("brightness");
+	brightnessField.value = data.brightness;
+
 	document.getElementById("plusCopyBtn").onclick = function () { 
 		copiesField.value = parseInt(copiesField.value) + 1; 
 	}
@@ -13,6 +16,8 @@ function onLoad() {
 			copiesField.value -= 1;
 		}
 	}
+
+	document.getElementById('code').value = "";
 }
 
 function keyPress(value){
@@ -47,10 +52,9 @@ function replace(idToHide, idToShow) {
 
 //logout back to account enterAccountScreen
 function logout(){
-	accountNum = "";
-	document.getElementById('code').value = "";
 	replace('printOptionsScreen', 'enterAccountScreen');
 	document.getElementById('printProgress').value = 0;
+	onLoad();
 }
 
 //button to submit printInformation and review print job
@@ -59,6 +63,8 @@ function reviewPrint() {
 	//set accountNum in review page
 	document.getElementById('accNum').innerHTML = data.accountNum;
 	data.copies = copiesField.value;
+	data.brightness = brightnessField.value;
+
 	document.getElementById('printProgress').value = 66;
 }
 

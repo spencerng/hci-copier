@@ -13,10 +13,10 @@
     <body onload="onLoad()">
       <div class="touchscreen_border">
         <div class="no_style" id = "enterAccountScreen">
-            <h3>Enter Account Code to Begin:</h3>
+            <h2 style="margin: 6rem 0 2rem;">Enter 4-Digit Account Code to Begin:</h2>
             <div class="btn-group-vertical ml-4 mt-4" role="group">
                 <div class="btn-group">
-                    <input class="input-box text-center" id="code" maxlength="4" disabled>
+                    <input class="input-box text-center code-input" id="code" maxlength="4" disabled>
                     <br>
                     <br>
                 </div>
@@ -125,14 +125,14 @@
     </div>
 
 	<div class="container" id="reviewPrintScreen" hidden>
-    <h1>Confirm Copy Options</h1>
+    <h1 style="margin: 5rem 0 5rem">Confirm Copy Options</h1>
 		<div>
-			<div class = "box" style= "height:250px;width:600px;display: block;margin-left: auto;
+			<div class = "box" style= "height:300px;width:600px;display: block;margin-left: auto;
 		  margin-right: auto;">
 				<div class="title" style="width:200px"></div>
 					<!--Print Information-->
-					<div class="row" style="font-size:20px;text-align:left;position:relative">
-					  <div class="column">
+					<div class="row" style="font-size:26px;text-align:left;position:relative">
+					  <div class="column" style="margin-left: 3rem;">
 						<div>Account Number: </div>
 						<div># of Copies: </div>
 						<div>Brightness: </div>
@@ -149,9 +149,9 @@
 						<div id="seperator">Yes/No</div>
 					  </div>
 					</div>
-          <div>
-          <button type="button" class="btn" onclick="returnScreen2()">Edit</button>
-          <button type="button" class="btn btn-success" onclick="confirmPrint()">Print</button>
+          <div style="margin: 4rem 0 3rem">
+          <button type="button" class="btn largeBtn" onclick="returnScreen2()">Edit</button>
+          <button type="button" class="btn btn-success largeBtn" onclick="confirmPrint()">Print</button>
           </div>	
 			  </div>
         

@@ -1,8 +1,9 @@
 var data;
 var copiesField, brightnessField;
+var btnGroups = ['side', 'sep', 'source', 'sepSource']
 
 function onLoad() {
-	data = { copies: 1, brightness: 3 }
+	data = { copies: 1, brightness: 3, side: null, source: null, sep: null, sepSource: null }
 
 	removeActive("");
 
@@ -22,10 +23,8 @@ function onLoad() {
 
 	document.getElementById('code').value = "";
 
-	var btnGroups = ['sideBtn', 'sepBtn', 'sourceBtn', 'sepSourceBtn']
-
 	for (var i = 0; i < btnGroups.length; i++) {
-		registerGroup(btnGroups[i])
+		registerGroup(btnGroups[i] + "Btn")
 	}
 
 }
@@ -37,8 +36,18 @@ function registerGroup(className) {
 			removeActive(className)
 
 			this.className += " active";
+			checkSepSourceEnable()
+			checkPrintBtnEnable()
 		}
 	}
+}
+
+function checkSepSourceEnable () {
+
+}
+
+function checkPrintBtnEnable () {
+
 }
 
 function removeActive(filterClass) {

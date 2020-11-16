@@ -140,21 +140,25 @@ async function printAnimation(){
 	var pages = 1;
 
 	bar.value = 0
-	await sleep(1000)
-	while (bar.value < 100){
-		document.getElementById('printLabel').innerHTML = "Copy " + pages + " of " + data.copies; 
-		await sleep(1000)
+	document.getElementById('printLabel').innerHTML = "Copy " + String(pages) + " of " + data.copies; 
+	await sleep(2000)
+	while (pages < data.copies){
+		document.getElementById('printLabel').innerHTML = "Copy " + String(pages) + " of " + data.copies; 
+		await sleep(1500)
 		document.getElementById('printProgress').value += printInc;
 		
 		if (bar.value >= 100) {
 			break;
 		}
+
 		pages += 1;
-		
+
 	}
-	
+	await sleep(2000);
+	replace('printingScreen', 'doneScreen');
 	document.getElementById('completeMessage').hidden = false;
 }
+
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -162,6 +166,7 @@ function sleep(ms) {
 
 //button to submit printInformation and review print job
 async function reviewPrint() {
+
 	replace('printOptionsScreen', 'reviewPrintScreen');
 	data.copies = copiesField.value;
 	data.brightness = brightnessField.value;
@@ -195,17 +200,49 @@ async function reviewPrint() {
 	} else {
 		document.getElementById('seperator').innerHTML = "None"
 	}
-
 	
 	printAnimation();
+
 }
 
 //return to printOptionsScreen input
 function returnScreen2(){
-	replace('reviewPrintScreen', 'printOptionsScreen')
+	replace('reviewPrintScreen', 'printOptionsScreen');
+}
+
+//return to options screen from review printing screen
+function returnScreen3(){
+	replace('printingScreen', 'reviewPrintScreen');
+	document.getElementById('completeMessage').hidden = true;
+	pages = 0;
+	document.getElementById('printProgress').value = 0;
 }
 
 //print page
 function confirmPrint(){
-	replace('reviewPrintScreen', 'printingScreen')
+	replace('reviewPrintScreen', 'printingScreen');
+}
+
+//do another complete job following completion
+function inputScreen(){
+	document.getElementById('completeMessage').hidden = true;
+	document.getElementById('printProgress').value = 0;
+	pages = 0;
+	replace('doneScreen', 'printOptionsScreen');
+}
+
+//logout after completion
+function logoutScreen(){
+	document.getElementById('completeMessage').hidden = true;
+	document.getElementById('printProgress').value = 0;
+	pages = 0;
+	replace('doneScreen', 'enterAccountScreen');
+	onLoad();
+}
+
+function printAgain() {
+	var accountNum = data.accountNum;
+	onLoad();
+	data.accountNum = accountNum;
+	inputScreen();
 }

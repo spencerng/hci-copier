@@ -94,9 +94,9 @@ function printAnimation(){
 		pages += 1;
 		document.getElementById('printProgress').value += printInc;
 		document.getElementById('printLabel').innerHTML = "Print Progress: Page " + String(pages) + " of " + data.copies; 
-		if (pages == data.copies){
-			document.getElementById('completeMessage').hidden = false;
-		}
+	}
+	else{
+		document.getElementById('completeMessage').hidden = false;
 	}
 }
 

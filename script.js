@@ -58,10 +58,12 @@ function logout(){
 //button to submit printInformation and review print job
 function reviewPrint() {
 	replace('printOptionsScreen', 'reviewPrintScreen');
-	//set accountNum in review page
-	document.getElementById('accNum').innerHTML = data.accountNum;
 	data.copies = copiesField.value;
 	data.brightness = brightnessField.value;
+	//set all information on info page to match with data
+	document.getElementById('accNum').innerHTML = data.accountNum;
+	document.getElementById('pageNum').innerHTML = data.copies;
+	// document.getElementById('brightness').innerHTML = data.brightness;
 }
 
 //return to printOptionsScreen input

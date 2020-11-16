@@ -61,14 +61,14 @@
                     <!--Brightness-->
                     <div class = "box" style= "height:225px">
                       <div class="title" style="width:100px"> Brightness </div>
-                      <input type="range" id="brightness" name="brightness" min="1" max="5" step="1" value="3"
+                      <input type="range" id="brightnessSlider" name="brightness" min="-2" max="2" step="1" value="0"
                       list="settings" style="position:absolute; top:5rem; left:5rem; width:15rem;">
                       <datalist id="settings">
+                        <option>-2</option>
+                        <option>-1</option>
+                        <option>0</option>
                         <option>1</option>
                         <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
                       </datalist>
                     </div>
                 </div>
@@ -76,19 +76,19 @@
                 <div class="option_col">
                     <div class = "box" style= "height:490px">
                         <div class="title" style="width:60px"> Sides </div>
-                        <div class="sideBtn" value="1 &xrarr; 1" style="margin-top:20px; position:relative">
+                        <div class="sideBtn" id="1-1" style="margin-top:20px; position:relative">
                             <img src="icons/1_1.png" class="icon">
                             <div class = "box-text">1 &xrarr; 1</div>
                         </div>
-                        <div class="sideBtn" value="1 &xrarr; 2" style="position:relative">
+                        <div class="sideBtn" id="1-2" style="position:relative">
                             <img src="icons/1_2.png" class="icon">
                             <div class = "box-text">1 &xrarr; 2</div>
                         </div>
-                        <div class="sideBtn" value="2 &xrarr; 2" style="position:relative">
+                        <div class="sideBtn" id="2-2" style="position:relative">
                             <img src="icons/2_2.png" class="icon">
                             <div class = "box-text">2 &xrarr; 2</div>
                         </div>
-                        <div class="sideBtn" value="2 &xrarr; 1" style="position:relative">
+                        <div class="sideBtn" id="2-1" style="position:relative">
                             <img src="icons/2_1.png" class="icon">
                             <div class = "box-text">2 &xrarr; 1</div>
                         </div>
@@ -128,17 +128,16 @@
 		<div>
 			<div class = "box" style= "height:250px;width:600px;display: block;margin-left: auto;
 		  margin-right: auto;">
-				<div class="title" style="width:200px">Review Information</div>
+				<div class="title" style="width:200px">Confirm Copy Info</div>
 					<!--Print Information-->
 					<div class="row" style="font-size:20px;text-align:left;position:relative">
 					  <div class="column">
 						<div>Account Number: </div>
-						<div>Page Number: </div>
+						<div># of Copies: </div>
 						<div>Brightness: </div>
 						<div>Side: </div>
-						<div>Paper Source Bin (A,B,C): </div>
-						<div>Separator Page?: </div>
-						<div>Separator Source (A,B,C): </div>
+						<div>Paper Source Bin: </div>
+						<div>Separator Page: </div>
 					  </div>
 					  <div class="column">
 						<div id="accNum">X</div>
@@ -146,8 +145,7 @@
 						<div id="brightness">X</div>
 						<div id="sideOpt">X</div>
 						<div id="paperBin">X</div>
-						<div id="seperator?">Yes/No</div>
-						<div id="seperatorBin">X</div>
+						<div id="seperator">Yes/No</div>
 					  </div>
 					</div>			
 			  </div>

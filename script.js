@@ -4,13 +4,13 @@ var btnGroups = ['side', 'sep', 'source', 'sepSource']
 var pages = 0; //for printing animation use only
 
 function onLoad() {
-	data = { copies: 1, brightness: 3, side: null, source: null, sep: null, sepSource: null }
+	data = { copies: 1, brightness: 0, side: null, source: null, sep: null, sepSource: null }
 
 	removeActive("");
 
 	copiesField = document.getElementById("copies");
 	copiesField.value = data.copies;
-	brightnessField = document.getElementById("brightness");
+	brightnessField = document.getElementById("brightnessSlider");
 	brightnessField.value = data.brightness;
 
 	document.getElementById("plusCopyBtn").onclick = function () { 
@@ -47,7 +47,12 @@ function getGroupValue(className) {
 	var elements = document.getElementsByClassName(className)
 	for (var i = 0; i < elements.length; i++) {
 		if (elements[i].className.includes("active")) {
-			return elements[i].value;
+			if (elements[i].value != undefined) {
+				return elements[i].value;
+			} else {
+				return elements[i].id;
+			}
+			
 		}
 	}
 
@@ -134,7 +139,7 @@ function printAnimation(){
 	if (document.getElementById('printProgress').value < 100){
 		pages += 1;
 		document.getElementById('printProgress').value += printInc;
-		document.getElementById('printLabel').innerHTML = "Print Progress: Page " + String(pages) + " of " + data.copies; 
+		document.getElementById('printLabel').innerHTML = "Print Progress: Copy " + String(pages) + " of " + data.copies; 
 	}
 	else{
 		document.getElementById('completeMessage').hidden = false;
@@ -147,10 +152,37 @@ function reviewPrint() {
 	replace('printOptionsScreen', 'reviewPrintScreen');
 	data.copies = copiesField.value;
 	data.brightness = brightnessField.value;
+	data.side = getGroupValue('sideBtn')
+	data.sep = getGroupValue('sepBtn')
+	data.source = getGroupValue('sourceBtn')
+	data.sepSource = getGroupValue('sepSourceBtn')
+	
+
 	//set all information on info page to match with data
 	document.getElementById('accNum').innerHTML = data.accountNum;
 	document.getElementById('pageNum').innerHTML = data.copies;
-	// document.getElementById('brightness').innerHTML = data.brightness;
+
+	var brightnessVal = data.brightness;
+
+	if (brightnessVal > 0) {
+		brightnessVal = "+" + brightnessVal + " (brighter)"
+	} else if (brightnessVal < 0) {
+		brightnessVal += " (darker)"
+	} else {
+		brightnessVal += " (default)"
+	}
+
+	document.getElementById('brightness').innerHTML = brightnessVal;
+
+	document.getElementById('sideOpt').innerHTML = data.side.split("-")[0] + " &xrarr; " + data.side.split("-")[1]
+	document.getElementById('paperBin').innerHTML = "Bin " + data.source;
+
+	if (data.sep === "Yes") {
+		document.getElementById('seperator').innerHTML = "From Bin " + data.sepSource;
+	} else {
+		document.getElementById('seperator').innerHTML = "None"
+	}
+
 	//update printing animation
 	document.getElementById('printLabel').innerHTML = "Print Progress: Page 0 of " + data.copies; 
 	setInterval(printAnimation, 1000);
